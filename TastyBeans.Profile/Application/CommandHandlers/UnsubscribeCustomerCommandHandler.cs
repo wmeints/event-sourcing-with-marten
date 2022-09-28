@@ -21,7 +21,8 @@ public class UnsubscribeCustomerCommandHandler
 
         if (customer == null)
         {
-            throw new AggregateNotFoundException($"Couldn't find customer with ID {cmd.CustomerId}");
+            throw new AggregateNotFoundException(
+                $"Couldn't find customer with ID {cmd.CustomerId}");
         }
         
         customer.Unsubscribe(cmd);
