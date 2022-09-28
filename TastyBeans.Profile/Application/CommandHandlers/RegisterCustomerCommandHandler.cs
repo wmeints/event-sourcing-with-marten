@@ -16,6 +16,9 @@ public class RegisterCustomerCommandHandler
 
     public async Task HandleAsync(RegisterCustomer cmd)
     {
+        var customer = new Customer(cmd);
         
+        _documentSession.Events.StartStream<Customer>(customer.Id, customer.PendingDomainEvents);
+        await _documentSession.SaveChangesAsync();
     }
 }

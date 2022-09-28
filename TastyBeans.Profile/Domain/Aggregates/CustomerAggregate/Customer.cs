@@ -12,6 +12,11 @@ public class Customer : AggregateRoot
     public Address ShippingAddress { get; private set; } = null!;
     public Subscription? Subscription { get; private set; }
 
+    private Customer()
+    {
+        
+    }
+    
     public Customer(RegisterCustomer cmd)
     {
         Emit(new CustomerRegistered(
